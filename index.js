@@ -2,10 +2,7 @@ const { ApolloServer, PubSub, gql } = require('apollo-server');
 
 const pubsub = new PubSub();
 const CHAT_CHANNEL = 'CHAT_CHANNEL'
-
-const logins = [{
-	name: "test"
-}];
+const logins = [];
 const messages = [{
 	id: 1,
 	from: 'System',
@@ -13,11 +10,13 @@ const messages = [{
 }];
 
 const typeDefs = gql`
+	# Add timestamp
 	type Login {
 		id: Int!,
 		name: String!
 	}
 
+	# Add timestamp
 	type Message {
 		id: Int!
 		from: String!
