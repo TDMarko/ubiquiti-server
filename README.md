@@ -22,6 +22,6 @@ node index.js
 ```
 
 ## Todo
-- Fix issue that nickname can't be used again. Make mutation after logout to remove it from server part
-- Make innactivity, store timestamps
+- ~~Fix issue that nickname can't be used again. Make mutation after logout to remove it from server part~~
+- ~~Make innactivity~~, store timestamps
 - Log everything to some database

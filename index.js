@@ -30,7 +30,8 @@ const typeDefs = gql`
 
 	type Mutation {
 		sendMessage(from: String!, message: String!): Message,
-		logIn(name: String!): Login
+		logIn(name: String!): Login,
+		logOut(name: String!): Login
 	}
 
 	type Subscription {
@@ -73,11 +74,24 @@ const resolvers = {
 				id: logins.length + 1,
 				name
 			}
+
 			logins.push(login)
 			pubsub.publish(CHAT_CHANNEL, {
 				messageSent: login
 			})
+
 			return login
+		},
+		logOut (root, {
+			name
+		}, {
+			pubsub
+		}) {
+			logins.map((obj, index) => {
+				if (obj.name === name) {
+					logins.splice(index, 1);
+				}
+			})
 		}
 	},
 
